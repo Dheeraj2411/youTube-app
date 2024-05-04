@@ -1,12 +1,11 @@
-import reactLogo from "./assets/youtube.svg";
-
 import "./App.css";
+import Body from "./components/Body";
 
 function App() {
   return (
     <>
       <div>
-        <img src={reactLogo} className="youtube logo" alt="youtube logo" />
+        <Body />
       </div>
     </>
   );

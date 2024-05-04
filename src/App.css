@@ -1,11 +1,15 @@
-/* #root {
+ body{
+  background-color: #dbdbdb63;
+ }
+
+ #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0 ;
+  padding: 0;
+  font-family: "Roboto",sans-serif;
 }
 
-.logo {
+/*.logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
