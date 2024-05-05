@@ -45,7 +45,7 @@ const Head = () => {
         <button className="sm:block  hidden  h-full w-9 mr-5 p-1.5  hover:bg-slate-300 rounded-full ">
           <img src={VideoAdd} alt="video Add" className="h-full w-full " />
         </button>
-        <button className="h-full w-9 mr-5 p-1.5  hover:bg-slate-300 rounded-full ">
+        <button className="h-full w-9 sm:mr-5 mr-1 p-1.5  hover:bg-slate-300 rounded-full ">
           <img src={Bell} alt="video Add" className="h-full w-full" />
         </button>
         <button className="h-full w-9 mr-5 p-1  hover:bg-slate-300 rounded-full ">
