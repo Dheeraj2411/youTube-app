@@ -10,7 +10,7 @@ const Head = () => {
   return (
     <nav className="h-[56px] bg-white fixed flex  items-center px-[2vw] justify-between w-full">
       <div className="h-full  flex items-center  relative mr-3">
-        <button className="w-10 p-2 rounded-full hover:bg-slate-300 ">
+        <button className="sm:block  hidden  w-10 p-2 rounded-full hover:bg-slate-300 ">
           <img src={Menu} className="w-7  object-cover" alt="youtube logo " />
         </button>
         <a href="#" className="relative w-24 h-full mx-3">
@@ -24,11 +24,11 @@ const Head = () => {
           </span>
         </a>
       </div>
-      <div className="flex relative  w-1/2 max-w-[650px] items-center justify-center h-11 mx-10 align-middle ml-auto ">
+      <div className="flex relative  w-1/2 max-w-[650px] items-center justify-center h-11 sm:mx-10 align-middle sm:ml-auto  ">
         <input
           type="text"
           placeholder="Search"
-          className="w-[calc(100%-100px)] h-full border border-[#dbdbdb] rounded-l-3xl px-5 text-base capitalize"
+          className="   w-[calc(100%-100px)] h-full border border-[#dbdbdb] rounded-l-3xl px-5 text-base capitalize"
         />
         <button className="w-16 h-full border border-[#dbdbdb] rounded-r-3xl px-2 border-l-0 bg-slate-100">
           <img src={Search} alt="search icon" className="w-8 mx-auto " />
@@ -42,7 +42,7 @@ const Head = () => {
         </button>
       </div>
       <div className="h-9   flex ml-auto  items-center justify-end">
-        <button className="h-full w-9 mr-5 p-1.5  hover:bg-slate-300 rounded-full ">
+        <button className="sm:block  hidden  h-full w-9 mr-5 p-1.5  hover:bg-slate-300 rounded-full ">
           <img src={VideoAdd} alt="video Add" className="h-full w-full " />
         </button>
         <button className="h-full w-9 mr-5 p-1.5  hover:bg-slate-300 rounded-full ">
