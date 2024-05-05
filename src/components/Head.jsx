@@ -5,12 +5,22 @@ import Mic from "../assets/microphone-10.svg";
 import VideoAdd from "../assets/video-add.svg";
 import Bell from "../assets/bell.svg";
 import User from "../assets/user-circle.svg";
+import { useDispatch } from "react-redux";
+import { toggleMenu } from "../utils/appSlice";
 
 const Head = () => {
+  const dispatch = useDispatch();
+
+  const toggleMenuHandler = () => {
+    dispatch(toggleMenu());
+  };
   return (
     <nav className="z-50 h-[56px] bg-white fixed flex  items-center px-[2vw] justify-between w-full">
       <div className="h-full  flex items-center  relative mr-3">
-        <button className="sm:block  hidden  w-10 p-2 rounded-full hover:bg-slate-300 ">
+        <button
+          className="sm:block  hidden  w-10 p-2 rounded-full hover:bg-slate-300 "
+          onClick={() => toggleMenuHandler()}
+        >
           <img src={Menu} className="w-7  object-cover" alt="youtube logo " />
         </button>
         <a href="#" className="relative w-24 h-full mx-3">

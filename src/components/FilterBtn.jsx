@@ -1,7 +1,24 @@
-import React from "react";
-
+import Filters from "./Filters";
 const FilterBtn = () => {
-  return <div>btn</div>;
+  const btnName = [
+    "all",
+    "CSS",
+    "web Dev",
+    "Python",
+    "entertainment",
+    "marvel",
+    "javaScript",
+    "artificial intelligence",
+    "machine learing",
+    "trending",
+  ];
+  return (
+    <div className="filter fixed top-14 h-14 w-full bg-[#fff] border border-x-0 border-y-[#dbdbdb] py-0 px-5 flex items-center overflow-x-auto overflow-y-hidden">
+      {btnName.map((name, index) => {
+        return <Filters name={name} key={index} />;
+      })}
+    </div>
+  );
 };
 
 export default FilterBtn;
