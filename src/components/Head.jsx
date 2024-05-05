@@ -8,7 +8,7 @@ import User from "../assets/user-circle.svg";
 
 const Head = () => {
   return (
-    <nav className="h-[56px] bg-white fixed flex  items-center px-[2vw] justify-between w-full">
+    <nav className="z-50 h-[56px] bg-white fixed flex  items-center px-[2vw] justify-between w-full">
       <div className="h-full  flex items-center  relative mr-3">
         <button className="sm:block  hidden  w-10 p-2 rounded-full hover:bg-slate-300 ">
           <img src={Menu} className="w-7  object-cover" alt="youtube logo " />
@@ -48,7 +48,7 @@ const Head = () => {
         <button className="h-full w-9 sm:mr-5 mr-1 p-1.5  hover:bg-slate-300 rounded-full ">
           <img src={Bell} alt="video Add" className="h-full w-full" />
         </button>
-        <button className="h-full w-9 mr-5 p-1  hover:bg-slate-300 rounded-full ">
+        <button className="h-full w-9 sm:mr-5 mr-1  p-1  hover:bg-slate-300 rounded-full ">
           <img src={User} alt="video Add" className="h-full w-full" />
         </button>
       </div>

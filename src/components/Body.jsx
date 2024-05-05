@@ -4,7 +4,7 @@ import Content from "./Content";
 
 const Body = () => {
   return (
-    <div>
+    <div className=" flex flex-col">
       <Head />
       <Content />
     </div>

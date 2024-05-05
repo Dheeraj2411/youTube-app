@@ -4,7 +4,7 @@ import SideBar from "./SideBar";
 
 const Content = () => {
   return (
-    <div className="flex">
+    <div className="relative top-[56px] flex">
       <SideBar />
       <MainContainer />
     </div>
