@@ -18,7 +18,6 @@ const SideBar = () => {
     Home,
     Shorts,
     Subscriptions,
-
     Channel,
     History,
     Playlist,
@@ -31,7 +30,6 @@ const SideBar = () => {
     "Home",
     "Shorts",
     "Subscriptions",
-
     "Your Channel",
     "History",
     "Playlist",
@@ -42,13 +40,13 @@ const SideBar = () => {
   ];
   if (!isMenuOpen) return null;
   return (
-    <aside className=" max-w-[250px] w-[250px] h-[calc(100vh-54px)] bg-[#fff] p-3">
+    <aside className="content min-w-[250px] w-[250px] bg-[#fff] p-3 h-[calc(100vh-56px)] overflow-y-auto">
       {icons.map((icon, index) => {
         return (
-          <>
+          <div key={index}>
             {index === 3 ? (
               <>
-                <hr className="border border-b-[rgba(0,0,0,0.1)] my-5 mx-0" />
+                <hr className="border  border-b-[rgba(0,0,0,0.1)] my-5 mx-0" />
                 <SidebarBtn
                   icon={icon}
                   key={index}
@@ -62,7 +60,7 @@ const SideBar = () => {
                 nameOfIcon={nameOfIcon[index]}
               />
             )}
-          </>
+          </div>
         );
       })}
     </aside>
