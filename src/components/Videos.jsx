@@ -3,20 +3,21 @@ import Dheeraj from "../assets/dheeraj.jpg";
 import Liked from "../assets/like.svg";
 
 const Videos = ({ info }) => {
-  const { snippet, statistics } = info;
+  const { snippet, statistics, thumbNails } = info;
   const { title, thumbnails, channelTitle } = snippet;
-  console.log(statistics?.viewCount);
+  // console.log(statistics?.viewCount);
+  // console.log(Id);
   return (
     <div className=" w-80 h-[360px] mx-2 my-4 p-2">
       <img
         src={thumbnails?.maxres?.url || thumbnails?.standard?.url}
         alt="thumbnail img"
-        className="h-[calc(100%-100px)] rounded-2xl object-cover"
+        className="h-[calc(100%-100px)] rounded-2xl object-cover cursor-pointer"
       />
       <div className=" h-[100px] py-2.5 flex justify-between">
         <img
-          src={thumbnails?.maxres?.url}
-          alt=""
+          src={thumbNails?.default?.url}
+          alt="channel icon"
           className="w-10 h-10 rounded-full object-cover  "
         />
         <div className="w-64">

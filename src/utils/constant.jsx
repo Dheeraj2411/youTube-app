@@ -5,4 +5,4 @@ export const YOUTUBE_API =
   API_KEY;
 
 export const CHANNEL_API =
-  "https://youtube.googleapis.com/youtube/v3/channels?part=snippet&id=";
+  "https://youtube.googleapis.com/youtube/v3/channels?maxResults=50&part=snippet&id=";
