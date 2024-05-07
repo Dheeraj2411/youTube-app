@@ -39,7 +39,7 @@ const VideoContainer = () => {
   console.log(video);
 
   return (
-    <div className="content fixed  top-28 flex flex-wrap overflow-y-scroll h-[calc(100vh-112px)] justify-evenly ">
+    <div className="content fixed  overflow-x-hidden top-28 flex flex-wrap overflow-y-scroll sm:h-[calc(100%-120px)] ms:h-[calc(100%-180px)] justify-evenly ">
       {video?.map((info) => (
         <Videos info={info} key={info.id} />
       ))}

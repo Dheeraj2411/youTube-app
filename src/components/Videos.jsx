@@ -1,5 +1,4 @@
 import React from "react";
-import Dheeraj from "../assets/dheeraj.jpg";
 import Liked from "../assets/like.svg";
 
 const Videos = ({ info }) => {
@@ -8,7 +7,7 @@ const Videos = ({ info }) => {
   // console.log(statistics?.viewCount);
   // console.log(Id);
   return (
-    <div className=" w-80 h-[360px] mx-2 my-4 p-2">
+    <div className=" w-80 h-[360px] sm:mx-2 my-4 p-2">
       <img
         src={thumbnails?.maxres?.url || thumbnails?.standard?.url}
         alt="thumbnail img"

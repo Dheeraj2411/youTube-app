@@ -41,11 +41,7 @@ const Head = () => {
           className="   w-[calc(100%-100px)] h-full border border-[#dbdbdb] rounded-l-3xl px-5 text-base capitalize"
         />
         <button className="w-16 h-full border border-[#dbdbdb] rounded-r-3xl px-2 border-l-0 bg-slate-100">
-          <img
-            src={Search}
-            alt="search icon"
-            className="min-w-8 w-8 mx-auto "
-          />
+          <img src={Search} alt="search icon" className="min-w-8 mx-auto " />
         </button>
         <button className="h-9 w-9   rounded-full  bg-slate-200 hover:bg-slate-300 ml-3 px-2">
           <img
