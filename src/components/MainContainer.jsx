@@ -3,7 +3,7 @@ import VideoContainer from "./VideoContainer";
 
 const MainContainer = () => {
   return (
-    <div className="relative">
+    <div className="relative h-full">
       <FilterBtn />
       <VideoContainer />
     </div>
