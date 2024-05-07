@@ -4,7 +4,7 @@ import Liked from "../assets/like.svg";
 const Videos = ({ info }) => {
   const { snippet, statistics, thumbNails } = info;
   const { title, thumbnails, channelTitle } = snippet;
-  // console.log(statistics?.viewCount);
+  console.log(info);
   // console.log(Id);
   return (
     <div className=" w-80 h-[360px] sm:mx-2 my-4 p-2">
@@ -30,13 +30,13 @@ const Videos = ({ info }) => {
             <img src={Liked} alt="" className="h-5 w-5  mr-2 " />
             <span className="text-[#979797]">
               {statistics.likeCount < 1000000
-                ? Math.round(statistics?.likeCount / 1000) + "K "
-                : Math.round(statistics?.likeCount / 100000) + "M "}
+                ? (statistics?.likeCount / 1000).toFixed() + "K "
+                : (statistics?.likeCount / 100000).toFixed(1) + "M "}
             </span>
             <span className="text-[#979797] ml-4">
               {statistics.viewCount < 1000000
-                ? Math.round(statistics?.viewCount / 1000) + "K "
-                : Math.round(statistics?.viewCount / 100000) + "M "}
+                ? (statistics?.viewCount / 1000).toFixed() + "K "
+                : (statistics?.viewCount / 1000000).toFixed(1) + "M "}
               views
             </span>
           </p>

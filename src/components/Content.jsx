@@ -1,13 +1,11 @@
-import FixedSibar from "./FixedSibar";
-import MainContainer from "./MainContainer";
+import { Outlet } from "react-router-dom";
 import SideBar from "./SideBar";
 
 const Content = () => {
   return (
     <div className="sm:relative top-[56px] flex fixed h-full">
       <SideBar />
-      <FixedSibar />
-      <MainContainer />
+      <Outlet />
     </div>
   );
 };

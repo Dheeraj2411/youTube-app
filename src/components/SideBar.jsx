@@ -38,9 +38,11 @@ const SideBar = () => {
     "Liked Videos",
     "Downloads",
   ];
-  if (isMenuOpen) return null;
+  const links=["/"]
+  if (!isMenuOpen) return null;
   return (
     <aside className="content fixed z-10 min-w-[250px] w-[250px] bg-[#fff] p-3 h-[calc(100vh-56px)] overflow-y-auto">
+      
       {icons.map((icon, index) => {
         return (
           <div key={index}>
@@ -51,6 +53,7 @@ const SideBar = () => {
                   icon={icon}
                   key={index}
                   nameOfIcon={nameOfIcon[index]}
+                  links={links[index]}
                 />
               </>
             ) : (
@@ -58,6 +61,7 @@ const SideBar = () => {
                 icon={icon}
                 key={index}
                 nameOfIcon={nameOfIcon[index]}
+                links={links[index]}
               />
             )}
           </div>
