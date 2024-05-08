@@ -37,13 +37,11 @@ const VideoContainer = () => {
     }
   };
 
-  console.log(video);
-
   return (
     <div className="content fixed  overflow-x-hidden top-28 flex flex-wrap overflow-y-scroll sm:h-[calc(100%-120px)] ms:h-[calc(100%-180px)] justify-evenly ">
       {video?.map((info) => (
-        <Link to={"/watch?v=" + info.id}>
-          <Videos info={info} key={info.id} />
+        <Link to={"/watch?v=" + info.id} key={info.id}>
+          <Videos info={info} />
         </Link>
       ))}
     </div>

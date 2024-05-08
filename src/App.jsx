@@ -7,10 +7,16 @@ import WatchPage from "./components/WatchPage";
 import FixedSibar from "./components/FixedSibar";
 import MainContainer from "./components/MainContainer";
 import store from "./utils/store.jsx";
+import Footer from "./components/Footer.jsx";
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <Content />,
+    element: (
+      <>
+        <Head />
+        <Content />
+      </>
+    ),
     children: [
       {
         path: "/",
@@ -23,7 +29,12 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "watch",
-        element: <WatchPage />,
+        element: (
+          <>
+            <WatchPage />
+            <Footer />
+          </>
+        ),
       },
     ],
   },
@@ -32,7 +43,6 @@ function App() {
   return (
     <Provider store={store}>
       <div className=" flex flex-col">
-        <Head />
         <RouterProvider router={appRouter} />
       </div>
     </Provider>

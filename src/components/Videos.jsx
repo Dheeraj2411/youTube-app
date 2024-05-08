@@ -4,10 +4,10 @@ import Liked from "../assets/like.svg";
 const Videos = ({ info }) => {
   const { snippet, statistics, thumbNails } = info;
   const { title, thumbnails, channelTitle } = snippet;
-  console.log(info);
+  // console.log(info);
   // console.log(Id);
   return (
-    <div className=" w-80 h-[360px] sm:mx-2 my-4 p-2">
+    <div className="w-screen sm:w-80 h-[360px]  sm:mx-2 my-4 sm:p-2">
       <img
         src={thumbnails?.maxres?.url || thumbnails?.standard?.url}
         alt="thumbnail img"
@@ -19,7 +19,7 @@ const Videos = ({ info }) => {
           alt="channel icon"
           className="w-10 h-10 rounded-full object-cover  "
         />
-        <div className="w-64">
+        <div className="sm:w-64 w-screen ms:ml-2">
           <h4 className="w-full h-12 overflow-hidden line-clamp-2 leading-6">
             {title}
           </h4>
