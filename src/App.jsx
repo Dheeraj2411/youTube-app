@@ -42,7 +42,7 @@ const appRouter = createBrowserRouter([
 function App() {
   return (
     <Provider store={store}>
-      <div className=" flex flex-col">
+      <div className=" flex flex-col box-border">
         <RouterProvider router={appRouter} />
       </div>
     </Provider>
