@@ -17,10 +17,10 @@ const Videos = ({ info }) => {
         <img
           src={thumbNails?.default?.url}
           alt="channel icon"
-          className="w-10 h-10 rounded-full object-cover mr-2 "
+          className="w-10 h-10 rounded-full object-cover mx-2 text-[1.8rem] "
         />
-        <div className="  ms:pl-2 mx-3 w-[75%]">
-          <h4 className=" h-12 overflow-x-hidden line-clamp-2 leading-6 text-ellipsis">
+        <div className="  ms:pl-2 mr-4  overflow-hidden ">
+          <h4 className=" h-12  line-clamp-2 leading-6 text-ellipsis">
             {title}
           </h4>
           <p className="text-sm my-[1px] mx-0 text-[#979797] ">
