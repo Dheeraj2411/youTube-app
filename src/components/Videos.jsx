@@ -7,7 +7,7 @@ const Videos = ({ info }) => {
   // console.log(info);
   // console.log(Id);
   return (
-    <div className="shadow-inner flex-grow w-full max-w-[480px] sm:w-80    sm:my-4 sm:mx-1">
+    <div className="shadow-inner flex-grow sm:w-80 min-w-[100vw]    sm:my-4 sm:mx-1">
       <img
         src={thumbnails?.maxres?.url || thumbnails?.standard?.url}
         alt="thumbnail img"
