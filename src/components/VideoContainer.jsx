@@ -38,12 +38,12 @@ const VideoContainer = () => {
   };
 
   return (
-    <div className="content fixed  overflow-x-hidden top-28 flex flex-wrap overflow-y-scroll sm:h-[calc(100%-120px)] ms:h-[calc(100%-180px)]  cursor-default ">
+    <div className="content fixed  overflow-x-hidden top-28 flex flex-wrap overflow-y-scroll sm:h-[calc(100%-120px)] ms:h-[calc(100%-180px)]   ">
       <>
-        {video[0] && <AdFunction info={video[0]} />}
+        {/* {video[0] && <AdFunction info={video[0]} />} */}
         {video?.map((info) => (
           <Link
-            className="flex flex-grow"
+            className="flex flex-grow gap-"
             to={"/watch?v=" + info.id}
             key={info.id}
           >

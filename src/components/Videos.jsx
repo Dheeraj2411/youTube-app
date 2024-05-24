@@ -7,20 +7,20 @@ const Videos = ({ info }) => {
   // console.log(info);
   // console.log(Id);
   return (
-    <div className="shadow-inner flex-grow sm:w-80 min-w-[100vw]    sm:my-4 sm:mx-1">
+    <div className=" flex-grow w-full max-w-[700px] sm:w-80  min-w-[300px]   sm:my-4 sm:mx-1">
       <img
         src={thumbnails?.maxres?.url || thumbnails?.standard?.url}
         alt="thumbnail img"
-        className="h-[calc(100%-108px)]  sm:rounded-2xl  cursor-pointer"
+        className="h-[calc(100%-108px)] w-full sm:rounded-2xl  "
       />
-      <div className=" h-[5.5rem] my-2.5 flex overflow-hidden">
+      <div className=" h-[5.5rem] my-2.5 flex mr-2">
         <img
           src={thumbNails?.default?.url}
           alt="channel icon"
-          className="w-10 h-10 rounded-full object-cover mx-2 text-[1.8rem] "
+          className="w-10 h-10 rounded-full object-cover mr-2 "
         />
-        <div className="  ms:pl-2 mr-4  overflow-hidden ">
-          <h4 className=" h-12  line-clamp-2 leading-6 text-ellipsis">
+        <div className="  ms:pl-2 mx-3">
+          <h4 className=" h-12 overflow-hidden line-clamp-2 leading-6 text-ellipsis">
             {title}
           </h4>
           <p className="text-sm my-[1px] mx-0 text-[#979797] ">
