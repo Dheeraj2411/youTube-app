@@ -6,62 +6,76 @@ import VideoAdd from "../assets/video-add.svg";
 import Bell from "../assets/bell.svg";
 import User from "../assets/user-circle.svg";
 import Cancel from "../assets/cancel.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
-import { Link } from "react-router-dom";
+import { Link, json } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { SEARCH_SUGGESTION_API, SEARCH_VIDEO_API } from "../utils/constant";
+import { cacheResults } from "../utils/searchSlice";
 
 const Head = () => {
   const [searchBtn, setsearchBtn] = useState(false);
-  const [input, setInputData] = useState([]);
-  const [result, setResultData] = useState([]);
-  const [selectedValue, setSelectedValue] = useState("");
+  const [inputData, setInputData] = useState("");
+  const [resultData, setResultData] = useState([]);
+
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   const dispatch = useDispatch();
+  const chacheResult = useSelector((store) => store.search);
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
+  //call on input
   useEffect(() => {
-    const searchResults = setTimeout(() => searchResult(), 200);
+    const searchResults = setTimeout(
+      () =>
+        chacheResult[inputData]
+          ? setResultData(chacheResult[inputData])
+          : searchResult(),
+      200
+    );
+    //clean up fn
     return () => {
       clearTimeout(searchResults);
     };
-  }, [input]);
-
+  }, [inputData]);
+  // console.log(chacheResult[inputData]);
+  // useEffect(() => {
+  //   keyWordForSearch();
+  // }, [selectedValue]);
+  //api call
   const searchResult = async () => {
     try {
-      const result = await fetch(SEARCH_SUGGESTION_API + input);
+      const result = await fetch(SEARCH_SUGGESTION_API + inputData);
       const data = await result?.json();
-      setResultData(data);
-      console.log(data);
+      setResultData(data[1]);
+      dispatch(
+        cacheResults({
+          [inputData]: data[1],
+        })
+      );
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(result);
-
-  useEffect(() => {
-    keyWordForSearch();
-  }, [selectedValue]);
 
   const results =
-    result[1] ??
-    result[1]?.map((data, index) => {
+    resultData ??
+    resultData?.map((data, index) => {
       return <ul key={index}>{data}</ul>;
     });
-  const keyWordForSearch = async () => {
-    const dataFetch = await fetch(SEARCH_VIDEO_API + selectedValue);
-    const data = await dataFetch.json();
+
+  // const keyWordForSearch = async () => {
+  //   const dataFetch = await fetch(SEARCH_VIDEO_API + selectedValue);
+
+  //   const data = await dataFetch.json();
+  //   console.log(data);
+  // };
+  const handleAddKey = (data) => {
     console.log(data);
   };
 
-  const handleLiClick = (event) => {
-    setSelectedValue(event.target.textContent);
-  };
-  console.log(showSuggestions);
   return (
     <nav
       className={`z-50 h-[56px] bg-white fixed flex  items-center ${
@@ -100,7 +114,7 @@ const Head = () => {
         <input
           type="text"
           placeholder="Search"
-          value={input}
+          value={inputData}
           onFocus={() => setShowSuggestions(true)}
           onBlur={() => setShowSuggestions(false)}
           onChange={(e) => {
@@ -118,8 +132,8 @@ const Head = () => {
             setsearchBtn((e) => !e);
           }}
           className={`${
-            searchBtn && "border bg-slate-100 "
-          } outline-none w-12 h-full md:border md:border-[#dbdbdb] rounded-r-3xl border-l-0 md:bg-slate-100`}
+            searchBtn && "border bg-[#f0f0f0] "
+          } outline-none w-12 h-full md:border md:border-[#dbdbdb]  rounded-r-3xl border-l-0 md:bg-[#f0f0f0] `}
         >
           <img
             src={searchBtn ? Cancel : Search}
@@ -134,14 +148,14 @@ const Head = () => {
           <div
             className={`${searchBtn && " mmd:w-[calc(100%-18px)] "} ${
               !searchBtn && "mmd:w-0"
-            } absolute top-11  md:w-[calc(100%-1px)]  bg-slate-200 rounded-md  text-base `}
+            } absolute top-11  md:w-[calc(100%-50px)] left-0 bg-[#f0f0f0] rounded-md  text-base `}
           >
             {results?.map((data, index) => {
               return (
                 <li
                   key={index}
                   className="list-none pl-2 cursor-pointer"
-                  onClick={handleLiClick}
+                  // onClick={() => handleAddKey(index)}
                 >
                   {data}
                 </li>
@@ -153,7 +167,7 @@ const Head = () => {
         <button
           className={`${
             searchBtn && "ms:hidden"
-          } h-9 w-9   rounded-full  bg-slate-200 hover:bg-slate-300 ml-3 px-2`}
+          } h-9 w-9   rounded-full  bg-[#f0f0f0] hover:bg-[#adadadc7] ml-3 px-2`}
         >
           <img
             src={Mic}
@@ -167,13 +181,13 @@ const Head = () => {
           searchBtn && "ms:hidden"
         } h-9 min-h-8   flex ml-auto  items-center justify-end`}
       >
-        <button className="sm:block  hidden  h-full w-9 mr-5 p-1.5  hover:bg-slate-300 rounded-full ">
+        <button className="sm:block  hidden  h-full w-9 mr-5 p-1.5  hover:bg-[#d8d8d8e4] rounded-full ">
           <img src={VideoAdd} alt="video Add" className="h-full w-full " />
         </button>
-        <button className="h-full w-9 sm:mr-5 mr-1 p-1.5  hover:bg-slate-300 rounded-full ">
+        <button className="h-full w-9 sm:mr-5 mr-1 p-1.5  hover:bg-[#d8d8d8e4] rounded-full ">
           <img src={Bell} alt="video Add" className="h-full w-full" />
         </button>
-        <button className="h-full w-9 sm:mr-5 mr-1  p-1  hover:bg-slate-300 rounded-full ">
+        <button className="h-full w-9 sm:mr-5 mr-1  p-1  hover:bg-[#d8d8d8e4] rounded-full ">
           <img src={User} alt="video Add" className="h-full w-full" />
         </button>
       </div>

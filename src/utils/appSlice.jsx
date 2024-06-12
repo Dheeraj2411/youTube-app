@@ -15,4 +15,4 @@ const appSlice = createSlice({
   },
 });
 export default appSlice.reducer;
-export const { toggleMenu, closeMenu, Home } = appSlice.actions;
+export const { toggleMenu, closeMenu } = appSlice.actions;

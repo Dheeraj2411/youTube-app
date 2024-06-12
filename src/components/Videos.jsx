@@ -1,11 +1,15 @@
 import React from "react";
 import Liked from "../assets/like.svg";
+import { useDispatch } from "react-redux";
+import { watchVideoInfo } from "../utils/infoSlice";
 
 const Videos = ({ info }) => {
   const { snippet, statistics, thumbNails } = info;
   const { title, thumbnails, channelTitle } = snippet;
-  // console.log(info);
-  // console.log(Id);
+  const dispatch = useDispatch();
+  dispatch(watchVideoInfo("hello"));
+  console.log(info);
+
   return (
     <div className=" flex-grow w-full max-w-[700px] sm:w-80  min-w-[300px]   sm:my-4 sm:mx-1">
       <img
@@ -20,14 +24,14 @@ const Videos = ({ info }) => {
           className="w-10 h-10 rounded-full object-cover mr-2 "
         />
         <div className="  ms:pl-2 mx-3">
-          <h4 className=" h-12 overflow-hidden line-clamp-2 leading-6 text-ellipsis">
+          <h4 className=" max-h-12 overflow-hidden line-clamp-2 leading-5 text-ellipsis">
             {title}
           </h4>
-          <p className="text-sm my-[1px] mx-0 text-[#979797] ">
+          <p className="text-base my-[1px] mx-0 text-[#979797] ">
             {channelTitle}
           </p>
-          <p className="flex">
-            <img src={Liked} alt="" className="h-5 w-5  mr-2 " />
+          <p className="flex ">
+            <img src={Liked} alt="" className=" h-4 w-4  mr-1 my-auto" />
             <span className="text-[#979797]">
               {statistics.likeCount < 1000000
                 ? (statistics?.likeCount / 1000).toFixed() + "K "

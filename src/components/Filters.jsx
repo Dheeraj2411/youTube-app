@@ -1,7 +1,7 @@
 const Filters = ({ name, index }) => {
   return (
     <div
-      className={`flex-[0,0,auto] py-2.5 px-5
+      className={`flex-[0,0,auto] py-2 px-5
   border border-[#dbdbdb] border-solid text-nowrap capitalize mr-2.5 ${
     index === 0
       ? "bg-[#a5a4a4] text-[#f0f0f0]  "

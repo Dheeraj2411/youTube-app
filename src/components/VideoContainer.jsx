@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import Videos, { AdFunction } from "./Videos";
+import Videos from "./Videos";
 import { API_KEY, YOUTUBE_API } from "../utils/constant";
 import { Link } from "react-router-dom";
+
 // import useVideoDetail from "../utils/useVideoDetail";
 
 const VideoContainer = () => {
@@ -43,7 +44,7 @@ const VideoContainer = () => {
         {/* {video[0] && <AdFunction info={video[0]} />} */}
         {video?.map((info) => (
           <Link
-            className="flex flex-grow gap-"
+            className="flex flex-grow "
             to={"/watch?v=" + info.id}
             key={info.id}
           >
