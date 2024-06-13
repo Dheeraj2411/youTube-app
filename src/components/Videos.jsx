@@ -1,21 +1,17 @@
 import React from "react";
 import Liked from "../assets/like.svg";
-import { useDispatch } from "react-redux";
-import { watchVideoInfo } from "../utils/infoSlice";
 
 const Videos = ({ info }) => {
   const { snippet, statistics, thumbNails } = info;
   const { title, thumbnails, channelTitle } = snippet;
-  const dispatch = useDispatch();
-  dispatch(watchVideoInfo("hello"));
-  console.log(info);
+  // console.log(info);
 
   return (
     <div className=" flex-grow w-full max-w-[700px] sm:w-80  min-w-[300px]   sm:my-4 sm:mx-1">
       <img
         src={thumbnails?.maxres?.url || thumbnails?.standard?.url}
         alt="thumbnail img"
-        className="h-[calc(100%-108px)] w-full sm:rounded-2xl  "
+        className="h-[calc(100%-108px)]  w-full sm:rounded-2xl  "
       />
       <div className=" h-[5.5rem] my-2.5 flex mr-2">
         <img

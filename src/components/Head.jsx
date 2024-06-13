@@ -17,8 +17,8 @@ const Head = () => {
   const [searchBtn, setsearchBtn] = useState(false);
   const [inputData, setInputData] = useState("");
   const [resultData, setResultData] = useState([]);
-
   const [showSuggestions, setShowSuggestions] = useState(false);
+  // const [selectedQuery, setSelectedQuery] = useState();
 
   const dispatch = useDispatch();
   const chacheResult = useSelector((store) => store.search);
@@ -40,10 +40,7 @@ const Head = () => {
       clearTimeout(searchResults);
     };
   }, [inputData]);
-  // console.log(chacheResult[inputData]);
-  // useEffect(() => {
-  //   keyWordForSearch();
-  // }, [selectedValue]);
+
   //api call
   const searchResult = async () => {
     try {
@@ -66,16 +63,18 @@ const Head = () => {
       return <ul key={index}>{data}</ul>;
     });
 
+  // useEffect(() => {
+  //   keyWordForSearch();
+  // }, [selectedQuery]);
   // const keyWordForSearch = async () => {
-  //   const dataFetch = await fetch(SEARCH_VIDEO_API + selectedValue);
-
+  //   const dataFetch = await fetch(SEARCH_VIDEO_API + selectedQuery);
   //   const data = await dataFetch.json();
-  //   console.log(data);
+  //   // console.log(data);
   // };
-  const handleAddKey = (data) => {
-    console.log(data);
-  };
-
+  // console.log("line74");
+  // const handleQuerySelect = () => {
+  //   console.log("dhee");
+  // };
   return (
     <nav
       className={`z-50 h-[56px] bg-white fixed flex  items-center ${
@@ -155,7 +154,7 @@ const Head = () => {
                 <li
                   key={index}
                   className="list-none pl-2 cursor-pointer"
-                  // onClick={() => handleAddKey(index)}
+                  onClick={() => handleQuerySelect()}
                 >
                   {data}
                 </li>

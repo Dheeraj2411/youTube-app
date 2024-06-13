@@ -5,7 +5,7 @@ const infoSlice = createSlice({
   initialState: {},
   reducers: {
     watchVideoInfo: (state, action) => {
-      state = action.payload;
+      state = Object.assign(state, action.payload);
     },
   },
 });
