@@ -18,9 +18,9 @@ const WatchPage = () => {
   const info = select[searchParam.get("v")] || select;
   const { snippet, statistics, thumbNails } = info;
   const { title, channelTitle } = snippet;
-  console.log(info.snippet);
+  // console.log(info.snippet);
   return (
-    <div className="justify-center content-center flex   ">
+    <div className="justify-center content-center flex  pl-5 ">
       <div>
         <iframe
           className="w-screen aspect-video max-w-2xl rounded-lg mx-auto"
@@ -48,12 +48,14 @@ const WatchPage = () => {
               </p>
               <button className="bg-[#dfdfdf] rounded-2xl px-2 py-1 text-slate-700 flex my-auto ml-2">
                 <img src={Bell} alt="bell" className="w-5 pr-1 my-auto " />
-                <span> Subscribed</span>
+                <p className="text-ellipsis overflow-hidden line-clamp-1">
+                  Subscribed
+                </p>
                 <button className="pl-1.5">▽</button>
               </button>
             </div>
             <div className="flex">
-              <div className="flex my-auto w-30 border bg-[#dfdfdf] rounded-2xl px-1 py-1">
+              <div className="flex my-auto w-30 border bg-[#dfdfdf] rounded-full px-1 py-1">
                 <button className="flex border-0 border-r-[1px]  border-black pr-3 pl-1">
                   <img src={Liked} alt="likeButton " className="w-6" />
                   <span className="text-[#aca7a7bb] my-auto pl-2 pr-1">
@@ -63,17 +65,17 @@ const WatchPage = () => {
                   </span>
                 </button>
                 <button className="flex px-2">
-                  <img src={Liked} alt="likeButton " className="w-6" />
+                  <img src={Liked} alt="likeButton " className="w-6 py-1" />
                 </button>
               </div>
 
-              <button className="p-2 px-3 mx-2  bg-[#dfdfdf] rounded-2xl">
+              <button className="py-1 px-2 mx-2  bg-[#dfdfdf] rounded-full">
                 Share
               </button>
             </div>
           </div>
         </div>
-        <div className="bg-[#dfdfdf] mx-5 rounded-md">
+        <div className="bg-[#dfdfdf]  rounded-md min-w-min">
           <span className="text-[#979797] ml-4">
             {statistics.viewCount < 1000000
               ? (statistics?.viewCount / 1000).toFixed() + "K "
