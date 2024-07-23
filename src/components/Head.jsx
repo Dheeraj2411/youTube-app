@@ -6,75 +6,29 @@ import VideoAdd from "../assets/video-add.svg";
 import Bell from "../assets/bell.svg";
 import User from "../assets/user-circle.svg";
 import Cancel from "../assets/cancel.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleMenu } from "../utils/appSlice";
-import { Link, json } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { SEARCH_SUGGESTION_API, SEARCH_VIDEO_API } from "../utils/constant";
-import { cacheResults } from "../utils/searchSlice";
+import { Link } from "react-router-dom";
+import useYouTubeSearch from "../hooks/useYouTubeSearch";
 
 const Head = () => {
-  const [searchBtn, setsearchBtn] = useState(false);
-  const [inputData, setInputData] = useState("");
-  const [resultData, setResultData] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  // const [selectedQuery, setSelectedQuery] = useState();
+  const youTubeSearch = useYouTubeSearch();
+  const {
+    toggleMenuHandler,
+    searchBtn,
+    inputData,
+    setShowSuggestions,
+    setInputData,
+    setSearchBtn,
+    showSuggestions,
+    results,
+    keyWordForSearch,
+  } = youTubeSearch;
 
-  const dispatch = useDispatch();
-  const chacheResult = useSelector((store) => store.search);
-
-  const toggleMenuHandler = () => {
-    dispatch(toggleMenu());
-  };
-  //call on input
-  useEffect(() => {
-    const searchResults = setTimeout(
-      () =>
-        chacheResult[inputData]
-          ? setResultData(chacheResult[inputData])
-          : searchResult(),
-      200
-    );
-    //clean up fn
-    return () => {
-      clearTimeout(searchResults);
-    };
-  }, [inputData]);
-
-  //api call
-  const searchResult = async () => {
-    try {
-      const result = await fetch(SEARCH_SUGGESTION_API + inputData);
-      const data = await result?.json();
-      setResultData(data[1]);
-      dispatch(
-        cacheResults({
-          [inputData]: data[1],
-        })
-      );
-    } catch (error) {
-      console.log(error);
-    }
+  const handleQuerySelect = (data) => {
+    setInputData(data);
+    keyWordForSearch(data);
+    setShowSuggestions(false);
   };
 
-  const results =
-    resultData ??
-    resultData?.map((data, index) => {
-      return <ul key={index}>{data}</ul>;
-    });
-
-  // useEffect(() => {
-  //   keyWordForSearch();
-  // }, [selectedQuery]);
-  // const keyWordForSearch = async () => {
-  //   const dataFetch = await fetch(SEARCH_VIDEO_API + selectedQuery);
-  //   const data = await dataFetch.json();
-  //   // console.log(data);
-  // };
-  // console.log("line74");
-  // const handleQuerySelect = () => {
-  //   console.log("dhee");
-  // };
   return (
     <nav
       className={`z-50 h-[56px] bg-white fixed flex  items-center ${
@@ -115,7 +69,6 @@ const Head = () => {
           placeholder="Search"
           value={inputData}
           onFocus={() => setShowSuggestions(true)}
-          onBlur={() => setShowSuggestions(false)}
           onChange={(e) => {
             setInputData(e.target.value);
           }}
@@ -125,10 +78,7 @@ const Head = () => {
         />
         <button
           onClick={() => {
-            setInputData("");
-            setResultData("");
-
-            setsearchBtn((e) => !e);
+            setSearchBtn((e) => !e);
           }}
           className={`${
             searchBtn && "border bg-[#f0f0f0] "
@@ -143,24 +93,34 @@ const Head = () => {
           />
         </button>
 
-        {showSuggestions && (
-          <div
-            className={`${searchBtn && " mmd:w-[calc(100%-18px)] "} ${
-              !searchBtn && "mmd:w-0"
-            } absolute top-11  md:w-[calc(100%-50px)] left-0 bg-[#f0f0f0] rounded-md  text-base `}
-          >
-            {results?.map((data, index) => {
-              return (
-                <li
-                  key={index}
-                  className="list-none pl-2 cursor-pointer"
-                  onClick={() => handleQuerySelect()}
-                >
-                  {data}
-                </li>
-              );
-            })}
-          </div>
+        {showSuggestions && results.length > 0 && (
+          <>
+            <div
+              className={`${searchBtn && " mmd:w-[calc(100%-18px)] "} ${
+                !searchBtn && "mmd:w-0"
+              } absolute top-11  md:w-[calc(100%-50px)] pt-2 left-0 bg-[#f0f0f0] rounded-md  text-base z-[9999] ${"hover:{setShowSuggestions(false)}"}`}
+            >
+              {results?.map((data, index) => {
+                return (
+                  <div className="flex p-0.5" key={index}>
+                    <img src={Search} alt="Search Icon" className="w-8 ml-1" />
+                    <li
+                      className="font-medium text-lg list-none pl-2 cursor-pointer"
+                      onClick={() => {
+                        handleQuerySelect(data);
+                      }}
+                    >
+                      {data}
+                    </li>
+                  </div>
+                );
+              })}
+            </div>
+            <div
+              className="fixed top-0 left-0 z-10 w-screen h-screen cursor-pointer"
+              onClick={() => setShowSuggestions(false)}
+            ></div>
+          </>
         )}
 
         <button

@@ -113,8 +113,7 @@ const CommentList = ({ comments }) => {
 
 const CommentsContainer = () => {
   return (
-    <div className="p-2">
-      Comments:
+    <div className="py-2 sm:p-2">
       <CommentList comments={commentData} />
     </div>
   );
