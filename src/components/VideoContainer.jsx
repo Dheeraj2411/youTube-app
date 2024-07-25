@@ -60,7 +60,7 @@ const VideoContainer = ({ isRecommendation }) => {
       <div
         className={` ${
           isRecommendation
-            ? "flex flex-wrap  items-center w-full"
+            ? "flex flex-col  w-full"
             : "fixed content  overflow-x-hidden top-28 flex flex-wrap overflow-y-scroll sm:h-[calc(100%-120px)] ms:h-[calc(100%-180px)]  "
         } `}
       >

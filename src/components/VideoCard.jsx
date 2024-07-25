@@ -74,18 +74,15 @@ export const SuggestionVideo = ({ info, isRecommendation }) => {
   // console.log(thumbNails);
   return (
     <div className=" flex w-full h-full  ">
-      <Link
-        className="   w-full rounded-lg mx-1 my-2"
-        to={"/watch?v=" + info.id}
-        key={info.id}
-      >
-        <img
-          src={thumbnails?.high.url || thumbnails?.medium.url}
-          alt="thumbnail img"
-          className="rounded-xl md:max-w-44  "
-        />
-      </Link>
-
+      <div className=" w-full md:max-w-44 rounded-lg ml-1 my-2">
+        <Link to={"/watch?v=" + info.id} key={info.id}>
+          <img
+            src={thumbnails?.high.url || thumbnails?.medium.url}
+            alt="thumbnail img"
+            className="rounded-xl md:max-w-44  w-full "
+          />
+        </Link>
+      </div>
       <div className="mx-4 my-auto ">
         {!isRecommendation && (
           <img
@@ -99,21 +96,27 @@ export const SuggestionVideo = ({ info, isRecommendation }) => {
           <h4 className="w-full overflow-hidden line-clamp-2 leading-5 text-ellipsis">
             {title}
           </h4>
-          <p className=" ">{channelTitle}</p>
-          <p className="flex ">
-            <img src={Liked} alt="" className=" " />
-            <span className="text-[#979797]">
-              {statistics.likeCount < 1000000
-                ? (statistics?.likeCount / 1000).toFixed() + "K "
-                : (statistics?.likeCount / 100000).toFixed(1) + "M "}
-            </span>
-            <span className="text-[#979797] ml-4">
-              {statistics.viewCount < 1000000
-                ? (statistics?.viewCount / 1000).toFixed() + "K "
-                : (statistics?.viewCount / 1000000).toFixed(1) + "M "}
-              views
-            </span>
+          <p className="w-full overflow-hidden line-clamp-2 leading-5 text-ellipsis text-[#979797]  ">
+            {channelTitle}
           </p>
+          {statistics ? (
+            <p className="flex  ">
+              <img src={Liked} alt="" className="w-5 h-5 " />
+              <span className="text-[#979797]">
+                {statistics.likeCount < 1000000
+                  ? (statistics?.likeCount / 1000).toFixed() + "K "
+                  : (statistics?.likeCount / 100000).toFixed(1) + "M "}
+              </span>
+              <span className="text-[#979797] ml-4">
+                {statistics.viewCount < 1000000
+                  ? (statistics?.viewCount / 1000).toFixed() + "K "
+                  : (statistics?.viewCount / 1000000).toFixed(1) + "M "}
+                views
+              </span>
+            </p>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>
