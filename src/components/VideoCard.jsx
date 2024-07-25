@@ -73,16 +73,16 @@ export const SuggestionVideo = ({ info, isRecommendation }) => {
   const { title, thumbnails, channelTitle } = snippet;
   // console.log(thumbNails);
   return (
-    <div className=" flex w-full  ">
+    <div className=" flex w-full h-full  ">
       <Link
-        className="max-w-96 w-full rounded-lg mx-1 my-2"
+        className="   w-full rounded-lg mx-1 my-2"
         to={"/watch?v=" + info.id}
         key={info.id}
       >
         <img
           src={thumbnails?.high.url || thumbnails?.medium.url}
           alt="thumbnail img"
-          className="rounded-xl aspect-video w-full h-full  "
+          className="rounded-xl md:max-w-44  "
         />
       </Link>
 

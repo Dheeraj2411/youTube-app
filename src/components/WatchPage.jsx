@@ -27,7 +27,7 @@ const WatchPage = () => {
   };
 
   return (
-    <div className="content  min-w-fit     md:ml-1 w-full  flex flex-wrap overflow-y-scroll ">
+    <div className="content  min-w-fit     md:ml-1 w-screen  flex md:flex-row ">
       <div className=" min-w-fit content-center  bg-slate-500  flex  flex-grow flex-col">
         <iframe
           className="md:rounded-lg  aspect-video"
